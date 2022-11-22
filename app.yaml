@@ -1,0 +1,328 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-credential-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/credential
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-provider-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/provider
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: aws-s3
+#   namespace: argocd
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: planktron-client
+#   project: planktron-client
+#   source:
+#     path: aws/s3
+#     repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+#     targetRevision: planktron-client
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - CreateNamespace=true
+
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: aws-rds
+#   namespace: argocd
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: planktron-client
+#   project: planktron-client
+#   source:
+#     path: aws/rds
+#     repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+#     targetRevision: planktron-client
+#   syncPolicy:
+#     automated:
+#       prune: false
+#       selfHeal: false
+#     syncOptions:
+#     - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-vpc-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/vpc
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-eks-cp-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/eks/control-plane
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-eks-ng-management-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/eks/node-group
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-eks-addon-core-dns-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/eks/addon/core-dns
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-eks-addon-ebs-csi-driver-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/eks/addon/aws-ebs-csi-driver
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-eks-addon-kube-proxy-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/eks/addon/kube-proxy
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-eks-addon-vpc-cni-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: aws/eks/addon/vpc-cni
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubernetes-provider-0001-planktron-client
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: planktron-client
+  project: planktron-client
+  source:
+    path: kubernetes/provider
+    repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+    targetRevision: planktron-client
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: ingress-nginx-0001-planktron-client
+#   namespace: argocd
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: planktron-client
+#   project: planktron-client
+#   source:
+#     path: kubernetes/ingress-nginx
+#     repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+#     targetRevision: planktron-client
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - CreateNamespace=true
+
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cert-manager-0001-planktron-client
+#   namespace: argocd
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: planktron-client
+#   project: planktron-client
+#   source:
+#     path: kubernetes/cert-manager
+#     repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+#     targetRevision: planktron-client
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - CreateNamespace=true
+
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: rancher-0001-planktron-client
+#   namespace: argocd
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: planktron-client
+#   project: planktron-client
+#   source:
+#     path: kubernetes/rancher
+#     repoURL: https://gitlab.ingress.o2b.com.br/cloudscript/templates/cloud-computing/amazon/crossplane-templates.git
+#     targetRevision: planktron-client
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#     - CreateNamespace=true
