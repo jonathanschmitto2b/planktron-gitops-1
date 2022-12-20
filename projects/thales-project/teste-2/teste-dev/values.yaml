@@ -1,5 +1,6 @@
 # SubChart values
-redis:
+redis: 
+  nameOverride: "redis-teste"
   master:
     count: 1
     
