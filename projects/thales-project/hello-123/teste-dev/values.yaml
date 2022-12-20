@@ -1,6 +1,7 @@
 # SubChart values
 redis:
   nameOverride: "redis"
+  fullnameOverride: "redis"
   master:
     count: 1
     
