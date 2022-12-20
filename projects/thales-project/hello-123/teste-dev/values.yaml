@@ -33,8 +33,8 @@ redis:
         cpu: 250m
         memory: 512Mi
       requests:
-        cpu: 150m
-        memory: 256Mi
+        cpu: 1m
+        memory: 1Mi
 
   replica:
     replicaCount: 1
