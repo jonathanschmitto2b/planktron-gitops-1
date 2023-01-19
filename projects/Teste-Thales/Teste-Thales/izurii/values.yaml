@@ -1,0 +1,41 @@
+# SubChart values
+redis:
+  nameOverride: "redis"
+  fullnameOverride: "redis"
+  master:
+    count: 1
+    
+    ##
+    disableCommands:
+      - FLUSHDB
+      - FLUSHALL
+    
+    ##
+    livenessProbe:
+      enabled: true
+      initialDelaySeconds: 40
+      periodSeconds: 10
+      timeoutSeconds: 10
+      successThreshold: 1
+      failureThreshold: 10
+    
+    ##
+    readinessProbe:
+      enabled: true
+      initialDelaySeconds: 10
+      periodSeconds: 2
+      timeoutSeconds: 2
+      successThreshold: 1
+      failureThreshold: 10
+    
+
+    resources:
+      limits:
+        cpu: 250m
+        memory: 512Mi
+      requests:
+        cpu: 1m
+        memory: 1Mi
+
+  replica:
+    replicaCount: 1
