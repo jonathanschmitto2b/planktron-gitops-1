@@ -1,0 +1,32 @@
+# Default values for cp_eks.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+cp_eks:
+  namespace: 7a9da14a-977c-4100-988e-91867007a3b4
+  providerConfigName: a4d59a55-3367-485b-940b-4798c15a0907
+
+  eks:
+    name: cluster-test
+    region: us-west-1
+    version: "1.23"
+    endpointPrivateAccess: false
+    endpointPublicAccess: true
+
+  network:
+    subnetIds:
+    - "subnet-0a3418269fff94574"
+    - "subnet-07efad74d45c3239c"
+    - "subnet-0aaa75f087ff91209"
+
+  nodeGroups:
+    - name: ngmgm
+      minSize: 3
+      maxSize: 3
+      desiredSize: 3
+      instanceTypes:
+      - m5.large
+      amiType: AL2_x86_64
+      capacityType: SPOT
+      labels:
+        nodegroup: management
+        env: dev
