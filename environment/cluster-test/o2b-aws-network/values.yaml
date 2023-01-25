@@ -1,0 +1,30 @@
+cp_network_aws:
+  name: network-7a9da14a-977c-4100-988e-91867007a3b4
+  namespace: 7a9da14a-977c-4100-988e-91867007a3b4
+
+  providerConfigName: a4d59a55-3367-485b-940b-4798c15a0907
+
+  network:
+    region: us-west-1
+    name: vpc-7a9da14a-977c-4100-988e-91867007a3b4
+    cidrBlock: 10.10.10.0/24
+    ngw: single
+    subnetPrivate:
+    - cidrBlock: 10.10.10.0/28
+      az: us-west-1b
+    - cidrBlock: 10.10.10.16/28
+      az: us-west-1b
+    - cidrBlock: 10.10.10.32/28
+      az: us-west-1c
+    subnetPublic:
+    - cidrBlock: 10.10.10.48/28
+      az: us-west-1b
+    - cidrBlock: 10.10.10.64/28
+      az: us-west-1b
+    - cidrBlock: 10.10.10.80/28
+      az: us-west-1c
+    eksName: cluster-test
+
+  tags:
+  - key: "Env"
+    value: cluster-test
