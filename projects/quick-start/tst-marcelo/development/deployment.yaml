@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-deployment
+  annotations:
+    planktron.io/app: simple-go-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-app-test
+  template:
+    metadata:
+      labels:
+        app: go-app-test
+    spec:
+      containers:
+      - name: go-app-test
+        imagePullPolicy: Always
+        image: ghcr.io/planktron/dapp:latest
+        ports:
+        - containerPort: 8080        
+      imagePullSecrets:
+      - name: planktron-test-dapp
